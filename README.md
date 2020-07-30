@@ -15,7 +15,7 @@
 2. Run `pip install -r requirements.txt`
 3. Input your api keys and streamble login into `config.json`
 4. For basic usage, run with `run.bat`
-5. Remember to select the option `Do not automatically parse URLs`
+5. Remember to select the option `Do not automatically parse URLs` at the bottom of your post
 
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://i.imgur.com/tJGqqCf.png" width="300">
 
