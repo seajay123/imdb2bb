@@ -29,8 +29,7 @@ def main(imdb, filename, mega, time, config):
     links = upload(config, tmp_dir)
     imdb_info = get_imdb_info(imdb, config)
     mediainfo = get_mediainfo(filename)
-    screen_height = get_image_size(tmp_dir)
-    generate_text(imdb_info, mediainfo, links, screen_height, mega)
+    generate_text(imdb_info, mediainfo, links, mega)
     cleanup(tmp_dir)
 
 # helper functions
@@ -131,17 +130,7 @@ def upload(config, tmp_dir):
             sys.exit ('Error uploading to Streamable! Exiting.')
     return links
 
-def get_image_size(tmp_dir):
-    file = f'screen-01.jpeg'
-    path = os.path.join(tmp_dir, file)
-    try:
-        (width, height) = Image.open(path).size
-    except FileNotFoundError:
-        sys.exit (f'File {file} not found! Exiting.')
-    height_out = round(height/width*500)
-    return height_out
-
-def generate_text(imdb_info, mediainfo, links, screen_height, mega):
+def generate_text(imdb_info, mediainfo, links, mega):
     if imdb_info['Response']=='False':
         sys.exit (imdb_info['Error'])
     else:
@@ -166,9 +155,9 @@ def generate_text(imdb_info, mediainfo, links, screen_height, mega):
 
 
 [mediainfo]{mediainfo}[/mediainfo]
-[fimg=500,{screen_height}]{links['screen-01.jpeg']}[/fimg] [fimg=500,{screen_height}]{links['screen-02.jpeg']}[/fimg]
+[wimg=500]{links['screen-01.jpeg']}[/wimg] [wimg=500]{links['screen-02.jpeg']}[/wimg]
 
-[fimg=500,{screen_height}]{links['screen-03.jpeg']}[/fimg] [fimg=500,{screen_height}]{links['screen-04.jpeg']}[/fimg]
+[wimg=500]{links['screen-03.jpeg']}[/wimg] [wimg=500]{links['screen-04.jpeg']}[/wimg]
 
 [b][url={links['sample-001.mkv']}]Sample 1[/url][/b], [b][url={links['sample-002.mkv']}]Sample 2[/url][/b]
 
