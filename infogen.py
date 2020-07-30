@@ -32,7 +32,7 @@ def get_imdb_info(imdb, config):
 def get_mediainfo(filename):
     print ('Retrieving mediainfo...')
     try:
-        mediainfo = os.popen("mediainfo " + filename).read()
+        mediainfo = os.popen('mediainfo "' + filename + '"').read()
         return mediainfo
     except:
         sys.exit ('Error retrieving mediainfo! Exiting.')
